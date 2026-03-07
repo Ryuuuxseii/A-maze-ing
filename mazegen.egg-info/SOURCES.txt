@@ -1,4 +1,3 @@
-README.md
 pyproject.toml
 mazegen/__init__.py
 mazegen/generator.py

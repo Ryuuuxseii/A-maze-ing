@@ -105,17 +105,17 @@ def display_maze(maze):
                 print(WALL, end="")
 
             elif cell == 2:
-                print("██", end="")  # start
+                print("🟆 ", end="")  # start
 
             elif cell == 3:
-                print("\033[36m██\033[0m", end="")  # exit
+                print("\033[36m⯧ \033[0m", end="")  # exit
 
         print()
 
 
 # ======================
 # CONFIG READER
-# ======================              
+# ======================
 
 def load_config():
 

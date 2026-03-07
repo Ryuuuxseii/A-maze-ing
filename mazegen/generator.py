@@ -60,7 +60,7 @@ def converter(maze, width, height):
             # cell center is always a path
             maze_conv[gy][gx] = 0
 
-            # if there is no wall, open the space
+            # if there is no wall, open the space w bitwise.
             if not (cell & E):
                 maze_conv[gy][gx + 1] = 0
 
@@ -79,6 +79,8 @@ def converter(maze, width, height):
 def maze_gen_main():
 
     maze = generate_maze(15, 15)
-
+    
+    for i in maze:
+        print(i)
 
 maze_gen_main()

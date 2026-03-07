@@ -12,7 +12,7 @@ def config_parser():
     d_config = {}
     try:
         with open("config.txt", 'r') as file:
-            content = [line.strip() for line in file]
+            content = [line.strip() for line in file if line != '\n']
     except FileNotFoundError:
         raise FileNotFoundError('"config.txt" doesnt exist!')
 
@@ -22,6 +22,7 @@ def config_parser():
         if c[0] != "#":     # --- the if is to ignore comments in .txt
             k, v = c.split("=")
             d_config[k] = v
+    print(d_config)
 
     # ========= VALIDATION CHECKS =========
 

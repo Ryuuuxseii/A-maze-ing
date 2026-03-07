@@ -1,7 +1,8 @@
 WIDTH=20
 HEIGHT=20
-ENTRY=0,0
+ENTRY=19,19
 EXIT=2,19
 OUTPUT_FILE=maze.txt
 PERFECT=true
+dbermokhek=True 
 #comment hehe
