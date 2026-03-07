@@ -1,0 +1,7 @@
+WIDTH=20
+HEIGHT=20
+ENTRY=0,0
+EXIT=2,19
+OUTPUT_FILE=maze.txt
+PERFECT=true
+#comment hehe
