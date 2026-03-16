@@ -3,7 +3,6 @@
 
 
 A-Maze-Ing is an interactive terminal-based maze generator and solver built in Python. The goal of the project is to procedurally generate mazes of configurable size, solve them automatically, and let players navigate them manually, all rendered directly in the terminal using the curses library!
-
 The project is structured around a reusable mazegen package that encapsulates:
 
 - Maze generation using two distinct algorithms: Depth-First Search (DFS).
@@ -12,7 +11,6 @@ The project is structured around a reusable mazegen package that encapsulates:
 - Theming system with multiple visual styles switchable at runtime.
 - Config-driven setup: maze dimensions, entry/exit points, algorithm, seed, and output file are all defined in a plain-text config file.
 - Mazes can be saved to a text file in a compact hexadecimal grid format, along with the seed, entry/exit coordinates, and solution string!
-
 ---
 # <u> INSTRUCTIONS: </u>
 
