@@ -143,7 +143,7 @@ This makes BFS a natural choice for maze solving where the goal is not just find
 
 The maze behavior is controlled through a simple text configuration file. This allows the maze to be modified without touching the source code.
 
-Example structure of the config file:
+Example structure of the config file
 
 width=20  
 height=10  
