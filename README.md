@@ -8,7 +8,7 @@ The project is structured around a reusable mazegen package that encapsulates:
 - Maze solving using Breadth-First Search (BFS), which guarantees the shortest path.
 - Real-time visualization of both generation and solving steps, rendered cell-by-cell in the terminal.
 - Theming system with multiple visual styles switchable at runtime.
-- Config-driven setup: maze dimensions, entry/exit points, algorithm, seed, and output file are all defined in a plain-text config file.
+- Config-driven setup; maze dimensions, entry/exit points, algorithm, seed, and output file are all defined in a plain-text config file.
 - Mazes can be saved to a text file in a compact hexadecimal grid format, along with the seed, entry/exit coordinates, and solution string!
 ---
 # <u> INSTRUCTIONS: </u>
