@@ -1,8 +1,7 @@
-WIDTH=20
-HEIGHT=20
-ENTRY=19,19
-EXIT=2,19
-OUTPUT_FILE=maze.txt
-PERFECT=true
-dbermokhek=True 
+WIDTH=14
+HEIGHT=15
+ENTRY=0,0
+EXIT=4,4
+OUTPUT_FILE=maze
+PERFECT=false
 #comment hehe
