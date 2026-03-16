@@ -4,7 +4,7 @@
 A-Maze-Ing is an interactive terminal-based maze generator and solver built in Python. The goal of the project is to procedurally generate mazes of configurable size, solve them automatically, and let players navigate them manually, all rendered directly in the terminal using the curses library!
 The project is structured around a reusable mazegen package that encapsulates the following
 
-- Maze generation using two distinct algorithms: Depth-First Search (DFS).
+- Maze generation using Depth-First Search (DFS) algorithm.
 - Maze solving using Breadth-First Search (BFS), which guarantees the shortest path.
 - Real-time visualization of both generation and solving steps, rendered cell-by-cell in the terminal.
 - Theming system with multiple visual styles switchable at runtime.
@@ -19,7 +19,7 @@ The project is meant to be used through a **Makefile**. Instead of running sever
 
 ### Tools
 
-- The following tools are required to run and manage A-Maze-Ing:
+- The following tools are required to run and manage A-Maze-Ing
 
 -Python 3.10+ – The core language used for the project.
 
