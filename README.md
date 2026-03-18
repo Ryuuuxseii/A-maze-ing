@@ -25,7 +25,7 @@ The project is meant to be used through a **Makefile**. Instead of running sever
 
 - The following tools are required to run and manage A-Maze-Ing:
 
--Python 3.10+ – The core language used for the project.
+- Python 3.10+ – The core language used for the project.
 
 - Make – Used to run commands like make run, make install, and make clean.
 
