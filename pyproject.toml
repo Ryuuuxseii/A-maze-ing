@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "mazegen"
 version = "1.0.0"
 description = "A reusable maze generation package"
-readme = "README.md"
+readme = "gen_README.md"
 requires-python = ">=3.10"
 
 

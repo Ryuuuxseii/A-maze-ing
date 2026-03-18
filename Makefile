@@ -5,16 +5,19 @@ FILES = a_maze_ing.py \
 		mazeparse/parser.py
 
 CACHE = */__pycache__\
-		.mypy_cache
+		.mypy_cache \
+		mazegen.egg-info
 
 CONFIG = config.txt
 
+run:
+	python3 $(MAIN) $(CONFIG)
 
 install:
 	pip install flake8 mypy build
 
-run:
-	python3 $(MAIN) $(CONFIG)
+build:
+	python3 -m build
 
 debug:
 	python3 -m pdb $(MAIN) $(CONFIG)
@@ -31,9 +34,5 @@ lint:
 	--disallow-untyped-defs \
 	--check-untyped-defs
 
-lint-strict:
-	flake8 $(FILES) 
-	mypy . --strict
 
-
-.PHONY: install run debug clean lint lint-strict
+.PHONY: install run debug clean lint

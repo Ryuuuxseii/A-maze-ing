@@ -1,15 +1,19 @@
----
+this team project was made a part of the 42 curriculum.
+
 # <u>DESCRIPTION: </u>
 
-A-Maze-Ing is an interactive terminal-based maze generator and solver built in Python. The goal of the project is to procedurally generate mazes of configurable size, solve them automatically, and let players navigate them manually, all rendered directly in the terminal using the curses library!
-The project is structured around a reusable mazegen package that encapsulates the following
 
-- Maze generation using Depth-First Search (DFS) algorithm.
+A-Maze-Ing is an interactive terminal-based maze generator and solver built in Python. The goal of the project is to procedurally generate mazes of configurable size, solve them automatically, and let players navigate them manually, all rendered directly in the terminal using the curses library!
+
+The project is structured around a reusable mazegen package that encapsulates:
+
+- Maze generation using two distinct algorithms: Depth-First Search (DFS).
 - Maze solving using Breadth-First Search (BFS), which guarantees the shortest path.
 - Real-time visualization of both generation and solving steps, rendered cell-by-cell in the terminal.
 - Theming system with multiple visual styles switchable at runtime.
-- Config-driven setup; maze dimensions, entry/exit points, algorithm, seed, and output file are all defined in a plain-text config file.
+- Config-driven setup: maze dimensions, entry/exit points, algorithm, seed, and output file are all defined in a plain-text config file.
 - Mazes can be saved to a text file in a compact hexadecimal grid format, along with the seed, entry/exit coordinates, and solution string!
+
 ---
 # <u> INSTRUCTIONS: </u>
 
@@ -19,7 +23,7 @@ The project is meant to be used through a **Makefile**. Instead of running sever
 
 ### Tools
 
-- The following tools are required to run and manage A-Maze-Ing
+- The following tools are required to run and manage A-Maze-Ing:
 
 -Python 3.10+ – The core language used for the project.
 
@@ -143,7 +147,7 @@ This makes BFS a natural choice for maze solving where the goal is not just find
 
 The maze behavior is controlled through a simple text configuration file. This allows the maze to be modified without touching the source code.
 
-Example structure of the config file
+Example structure of the config file:
 
 width=20  
 height=10  
@@ -209,6 +213,33 @@ One thing that would have helped a lot is having a better overview of the tasks 
 With more micro planning at the start, a lot of that trial and error could probably have been avoided.
 
 On the other hand, it really pushed us to think outside the box and find solutions that worked well with everything else that had already been implemented. In the end it turned into a great exercise in problem solving and learning to adapt to its state as the project evolved.
+
+
+### How to use The MazeGenerator
+The `mazegen` package is designed to be standalone. Once installed via pip (using the `.whl` or `.tar.gz` file in the root), you can use it in any Python 3.10+ project:
+
+```python
+import mazegen
+
+config = {
+    "WIDTH": 30, "HEIGHT": 20, "ENTRY": (0, 0), "EXIT": (29, 19), "PERFECT": True
+}
+generator = mazegen.MazeGenerator(config)
+cnv_maze, logic_maze = generator.generate()
+solution = generator.solve()
+```
+
+### Specific Tools Used
+- **Language:** Python 3.10+
+- **Linting:** `flake8` and `mypy`
+- **Automation:** `GNU Make`
+- **Packaging:** `setuptools` and `build`
+
+### Resources
+
+- [BFS Algorithm Explained](https://www.youtube.com/watch?v=HZ5YTanv5QE) - Used for implementing the shortest path solver.
+- [DFS Maze Generation](https://www.youtube.com/watch?v=0O2sq9HlU9c) - Foundation for the procedural generation logic.
+- [Python Curses Documentation](https://docs.python.org/3/howto/curses.html) - For the terminal UI rendering.
 
 ***
 <div style="display: flex; justify-content: center; gap: 20px;">
