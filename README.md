@@ -248,5 +248,5 @@ solution = generator.solve()
 </div>
 
 <div style="text-align: center; margin-top: 10px;">
-  <span style="font-weight: bold; text-decoration: underline;">Ryuuuxseii   and   SolarianDev</span>
+  <span style="font-weight: bold; text-decoration: underline;">Made by Ryuuuxseii   and   SolarianDev</span>
 </div>
