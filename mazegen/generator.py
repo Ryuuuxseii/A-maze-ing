@@ -1,5 +1,6 @@
 import random
 from typing import Optional, Any
+import collections as col
 
 
 class MazeGenerator:
@@ -15,7 +16,7 @@ class MazeGenerator:
     DY = {E: 0, W: 0, N: -1, S: 1}
 
     OPP = {E: W, W: E, N: S, S: N}
-    # ---------------------------
+    # ----------------------------
 
     def __init__(self, config: dict[str, Any]):
         """
@@ -132,50 +133,57 @@ class MazeGenerator:
 
         return maze
 
-    def _convert(self, maze: list[list[int]]) -> list[list[int]]:
+    def bfs(self, maze: list[list[int]],
+            s: dict[str, Any]) -> list[tuple[int, int]]:
         """
-        Internal method: Converts the logical maze into a visual grid map.
+        Finds the shortest path from entry to exit using Breadth-First Search.
         """
-        w, h = self.config['WIDTH'], self.config['HEIGHT']
-        grid_w = 2 * w + 1
-        grid_h = 2 * h + 1
 
-        maze_conv = [[1 for _ in range(grid_w)] for _ in range(grid_h)]
+        entry = s['ENTRY']
+        if isinstance(entry, str):
+            x, y = map(int, entry.split(','))
+            start: tuple[int, int] = (x, y)
+        else:
+            start = entry
 
-        for y in range(h):
-            for x in range(w):
-                cell = maze[y][x]
-                gx = 2 * x + 1
-                gy = 2 * y + 1
+        ex = s['EXIT']
+        if isinstance(ex, str):
+            x, y = map(int, ex.split(','))
+            goal: tuple[int, int] = (x, y)
+        else:
+            goal = ex
 
-                # cell center is always a path
-                maze_conv[gy][gx] = 0
+        width = int(s['WIDTH'])
+        height = int(s['HEIGHT'])
 
-                if not (cell & self.E):
-                    maze_conv[gy][gx + 1] = 0
-                if not (cell & self.W):
-                    maze_conv[gy][gx - 1] = 0
-                if not (cell & self.N):
-                    maze_conv[gy - 1][gx] = 0
-                if not (cell & self.S):
-                    maze_conv[gy + 1][gx] = 0
+        queue = col.deque([(start[0], start[1], [start])])
+        visited = {start}
 
-        for y in range(h):
-            for x in range(w):
-                if maze[y][x] == 15:
-                    gx = 2 * x + 1
-                    gy = 2 * y + 1
+        while queue:
+            x, y, path = queue.popleft()
 
-                    # Fill the entire 3x3 expanded block with '4'
-                    for dy in [-1, 0, 1]:
-                        for dx in [-1, 0, 1]:
-                            maze_conv[gy + dy][gx + dx] = 4
+            if (x, y) == goal:
+                return path
 
-                    maze_conv[gy][gx] = 5
+            for direction in [self.S, self.W, self.N, self.E]:
 
-        return maze_conv
+                # if there is no wall
+                if (maze[y][x] & direction) == 0:
 
-    def generate(self) -> tuple[list[list[int]], list[list[int]]]:
+                    nx = x + self.DX[direction]
+                    ny = y + self.DY[direction]
+
+                    if (
+                        0 <= nx < width and
+                        0 <= ny < height and
+                        (nx, ny) not in visited
+                    ):
+                        visited.add((nx, ny))
+                        queue.append((nx, ny, path + [(nx, ny)]))
+
+        return []
+
+    def generate(self) -> list[list[int]]:
         """
         Main controller for generating and returning the maze.
         Handles seed initialization, blocking the '42', DFS, and conversion.
@@ -205,7 +213,7 @@ class MazeGenerator:
             end_pos = (width - 1, height - 1)
 
         blocked = []
-        if width >= 12 and height >= 8:
+        if width >= 10 and height >= 8:
             cx, cy = width // 2, height // 2
             blocked = [
                 (cx-3, cy-2), (cx-1, cy-2),
@@ -221,17 +229,5 @@ class MazeGenerator:
             ]
 
         maze = self._dfs(blocked)
-        cnv_maze = self._convert(maze)
 
-        sx = (start_pos[0] * 2) + 1
-        sy = (start_pos[1] * 2) + 1
-        ex = (end_pos[0] * 2) + 1
-        ey = (end_pos[1] * 2) + 1
-
-        if 0 <= sy < len(cnv_maze) and 0 <= sx < len(cnv_maze[0]):
-            cnv_maze[sy][sx] = 2
-
-        if 0 <= ey < len(cnv_maze) and 0 <= ex < len(cnv_maze[0]):
-            cnv_maze[ey][ex] = 3
-
-        return cnv_maze, maze
+        return maze

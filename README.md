@@ -1,5 +1,6 @@
-this team project was made a part of the 42 curriculum.
+*This project has been created as part of the 42 curriculum by abougues, zael-ghm.*
 
+---
 # <u>DESCRIPTION: </u>
 
 
@@ -25,7 +26,7 @@ The project is meant to be used through a **Makefile**. Instead of running sever
 
 - The following tools are required to run and manage A-Maze-Ing:
 
-- Python 3.10+ – The core language used for the project.
+-Python 3.10+ – The core language used for the project.
 
 - Make – Used to run commands like make run, make install, and make clean.
 
@@ -229,6 +230,10 @@ cnv_maze, logic_maze = generator.generate()
 solution = generator.solve()
 ```
 
+### Team Roles
+- **abougues :** Implemented core DFS generation, BFS solver, and the curses terminal UI.
+- **zael-ghm :** Designed config parsing, hex output formatting, Makefile, and packaging.
+
 ### Specific Tools Used
 - **Language:** Python 3.10+
 - **Linting:** `flake8` and `mypy`
@@ -248,5 +253,5 @@ solution = generator.solve()
 </div>
 
 <div style="text-align: center; margin-top: 10px;">
-  <span style="font-weight: bold; text-decoration: underline;">Made by Ryuuuxseii   and   SolarianDev</span>
+  <span style="font-weight: bold; text-decoration: underline;">Ryuuuxseii   and   SolarianDev</span>
 </div>

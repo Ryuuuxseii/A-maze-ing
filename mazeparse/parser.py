@@ -1,4 +1,4 @@
-from typing import Union, Any
+from typing import Any
 
 Coords = tuple[int, int]
 
@@ -56,6 +56,7 @@ def config_parser(filename: str) -> dict[str, Any]:
     exit_tuple: Coords = (int(exit_parts[0]), int(exit_parts[1]))
 
     # create settings dictionary
+
     s = {
         "WIDTH": int(d_config["WIDTH"]),
         "HEIGHT": int(d_config["HEIGHT"]),
@@ -64,12 +65,6 @@ def config_parser(filename: str) -> dict[str, Any]:
         "EXIT": exit_tuple,
         "OUTPUT_FILE": d_config["OUTPUT_FILE"]
     }
-
-    # 42 limitation
-    if (s["HEIGHT"] < 8 or s["WIDTH"] < 12):
-        raise ValueError(
-            "The maze dimensions are too small to fit the '42' pattern."
-            )
 
     if "SEED" in d_config:
         s["SEED"] = d_config["SEED"]
